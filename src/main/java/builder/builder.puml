@@ -1,0 +1,75 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+ComputerBuilder ^-- Desktop
+ComputerBuilder ^-- Notebook
+ComputerBuilder *--> Computer
+Desktop ^-- Server
+ComputerAssembleDirector o--> ComputerBuilder : builder
+Client ..> Computer
+Client ..> ComputerAssembleDirector
+Client ..> XMLUtil
+
+abstract class ComputerBuilder {
+    # Computer computer
+    + {abstract} void buildCPU()
+    + {abstract} void buildRAM()
+    + {abstract} void buildHDD()
+    + {abstract} void buildHost()
+    + {abstract} void buildDisplay()
+    + Computer getComputer()
+}
+
+class Computer {
+    - String CPU
+    - String RAM
+    - String HDD
+    - String Host
+    - String Display
+    + void setCPU()
+    + String getCPU()
+    + void setRAM()
+    + String getRAM()
+    + void setHDD()
+    + String getHDD()
+    + void setHost()
+    + String getHost()
+    + void setDisplay()
+    + String getDisplay()
+}
+
+class Desktop {
+    + void buildCPU()
+    + void buildRAM()
+    + void buildHDD()
+    + void buildHost()
+    + void buildDisplay
+}
+
+class Notebook {
+    + void buildCPU()
+    + void buildRAM()
+    + void buildHDD()
+    + void buildHost()
+    + void buildDisplay
+}
+
+class Server {
+    + void buildDisplay()
+}
+
+class ComputerAssembleDirector {
+    - ComputerBuilder cb
+    + void setComputerBuilder(ComputerBuilder cb)
+    + Computer assemble()
+}
+
+class XMLUtil {
+    + {static} Object getBean()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

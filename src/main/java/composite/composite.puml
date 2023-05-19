@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+AbstractFile ^-- Folder
+AbstractFile ^-- ImageFile
+AbstractFile ^-- TextFile
+AbstractFile ^-- VideoFile
+Folder o--> AbstractFile : fileList
+Client ..> AbstractFile
+
+abstract class AbstractFile {
+    + {abstract} void add(AbstractFile abstractFile)
+    + {abstract} void remove(AbstractFile abstractFile)
+    + {abstract} void display()
+}
+
+class Folder {
+    - List<AbstractFile> fileList
+    - String fileName
+    + Folder(String fileName)
+    + void add(AbstractFile abstractFile)
+    + void remove(AbstractFile abstractFile)
+    + void display()
+}
+
+class ImageFile {
+    - String fileName
+    + ImageFile(String fileName)
+    + void add(AbstractFile abstractFile)
+    + void remove(AbstractFile abstractFile)
+    + void display()
+}
+
+class TextFile {
+    - String fileName
+    + TextFile(String fileName)
+    + void add(AbstractFile abstractFile)
+    + void remove(AbstractFile abstractFile)
+    + void display()
+}
+
+class VideoFile {
+    - String fileName
+    + VideoFile(String fileName)
+    + void add(AbstractFile abstractFile)
+    + void remove(AbstractFile abstractFile)
+    + void display()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

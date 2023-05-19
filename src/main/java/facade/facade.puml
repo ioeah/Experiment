@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Client ..> Mainframe
+Mainframe --> CPU
+Mainframe --> Memory
+Mainframe --> HardDisk
+Mainframe --> OS
+
+class Mainframe {
+    - Memory memory
+    - CPU cpu
+    - HardDisk hardDisk
+    - OS os
+    + Mainframe()
+    + void on()
+}
+class CPU {
+    + void run()
+}
+
+class HardDisk {
+    + void read()
+}
+
+class Memory {
+    + void check()
+}
+
+class OS {
+    + void load()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

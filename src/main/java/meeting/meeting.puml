@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+MyElement ^-- Employee
+MyElement ^-- Department
+MyObserver <|.. Employee
+MyObserver <|.. Department
+MySubject <|.. Administrator
+Client ..> Administrator
+Client ..> Employee
+Client ..> Department
+
+interface MyObserver {
+    + void inform()
+}
+
+interface MySubject {
+    + void receive()
+}
+
+abstract class MyElement {
+    - String name
+    + {abstract} void receive()
+    + String getName()
+    + void setName()
+}
+
+class Administrator {
+    - List<MyElement> meetingList
+    + void attach()
+    + void detach()
+    + void inform()
+}
+
+class Employee {
+    + Employee(String name)
+    + void receive()
+}
+
+class Department {
+    - List<MyElement> list
+    + Department(String name)
+    + void add(MyElement element)
+    + void remove(MyElement element)
+    + void receive()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

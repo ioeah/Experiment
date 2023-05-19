@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+TravelStrategy <|.. AirplaneStrategy
+TravelStrategy <|.. BicycleStrategy
+TravelStrategy <|.. TrainStrategy
+TravelStrategy <|.. WalkStrategy
+Person o--> TravelStrategy : strategy
+Client ..> Person
+Client ..> XMLUtil
+Client ..> TravelStrategy
+
+interface TravelStrategy {
+    + void travel()
+}
+
+class Person {
+    - TravelStrategy strategy
+    + void setStrategy(TravelStrategy strategy)
+    + void travel()
+}
+
+class AirplaneStrategy {
+    + void travel()
+}
+
+class BicycleStrategy {
+    + void travel()
+}
+
+class TrainStrategy {
+    + void travel()
+}
+
+class WalkStrategy {
+    + void travel()
+}
+
+class XMLUtil {
+    + {static} Object getBean()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

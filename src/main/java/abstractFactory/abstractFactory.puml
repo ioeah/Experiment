@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+RAM <|.. MacRAM
+RAM <|.. PCRAM
+CPU <|.. MacCPU
+CPU <|.. PCCPU
+ComputerFactory <|.. MacFactory
+ComputerFactory <|.. PCFactory
+Client ..> RAM
+Client ..> CPU
+Client ..> ComputerFactory
+Client ..> XMLUtil
+
+interface RAM {
+    + void start()
+}
+
+interface CPU {
+    + void run()
+}
+
+interface ComputerFactory {
+    + CPU produceCPU()
+    + RAM produceRAM()
+}
+
+class MacCPU {
+    + void run()
+}
+
+class MacFactory {
+    + CPU produceCPU()
+    + RAM produceRAM()
+}
+
+class MacRAM {
+    + void start()
+}
+
+class PCCPU {
+    + void run()
+}
+
+class PCFactory {
+    + CPU produceCPU()
+    + RAM produceRAM()
+}
+
+class PCRAM {
+    + void start()
+}
+
+class XMLUtil {
+    + {static} Object getBean()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

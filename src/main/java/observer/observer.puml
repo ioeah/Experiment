@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Investor <|.. ConcreteInvestor
+Stock --> Investor : has
+Client ..> Stock
+Client ..> Investor
+
+interface Investor {
+    + void upDate()
+}
+
+class Stock {
+    - String name
+    - double price
+    # List<Investor> investors
+    + void attach()
+    + void detach()
+    + void setName()
+    + String getName()
+    + void setPrice()
+    + double getPrice()
+    + void notifyInvestor()
+}
+
+class ConcreteInvestor {
+    + void upDate()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Cat <|.. Adapter
+Cat <|.. ConcreteCat
+Dog <|.. Adapter
+Dog <|.. ConcreteDog
+Client ..> Cat
+Client ..> Dog
+Client ..> Adapter
+
+interface Cat {
+    + void cry()
+    + void catchMouse()
+}
+
+interface Dog {
+    + void wang()
+    + void action()
+}
+
+class Adapter {
+    - Dog dog
+    - Cat cat
+    + void setCat()
+    + void setDog()
+    + void catchMouse()
+    + void cry()
+    + void wang()
+    + void action()
+}
+
+class ConcreteCat {
+    + void cry()
+    + void catchMouse()
+}
+
+class ConcreteDog {
+    + void wang()
+    + void action()
+}
+
+class Client {
+    + {static} void main(String[] args)
+}
+
+@enduml

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config>
+    <abstractFactory>abstractFactory.MacFactory</abstractFactory>
+    <builder>builder.Server</builder>
+    <iterator>iterator.SkyworthTelevision</iterator>
+    <strategy>strategy.AirplaneStrategy</strategy>
+    <media>media.MediaPlayerFactory</media>
+    <meeting>meeting.</meeting>
+<!--    适配器模式，抽象工厂模式
+    观察者模式，组合模式-->
+</config>

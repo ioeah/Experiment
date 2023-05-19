@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Television <|.. SkyworthTelevision
+Television <|.. TCLTelevision
+TVIterator <|.. SkyworthIterator
+TVIterator <|.. TCLIterator
+Client ..> TVIterator
+Client ..> Television
+Client ..> XMLUtil
+
+interface Television {
+    + TVIterator createIterator()
+}
+
+interface TVIterator {
+    + void setChannel(int i)
+    + void next()
+    + void previous()
+    + boolean isLast()
+    + Object currentChannel()
+    + boolean isFirst()
+}
+
+class SkyworthIterator{
+    - SkyworthTelevision tv
+    - int currentIndex
+    + SkyworthIterator(SkyworthTelevision tv)
+    + void setChannel(int i)
+    + void next()
+    + void previous()
+    + boolean isLast()
+    + Object currentChannel()
+    + boolean isFirst()
+
+}
+
+class SkyworthTelevision {
+    # Object[] obj
+    + TVIterator createIterator()
+}
+
+class TCLIterator {
+    - TCLTelevision tv
+    - int currentIndex
+    + TCLIterator(TCLTelevision tv)
+    + void setChannel(int i)
+    + void next()
+    + void previous()
+    + boolean isLast()
+    + Object currentChannel()
+    + boolean isFirst()
+}
+
+class TCLTelevision {
+    # Object[] obj
+    + TVIterator createIterator()
+}
+
+class XMLUtil {
+    + {static} Object getBean()
+}
+
+class Client {
+    + {static} void display(Television tv)
+    + {static} void reserveDisplay(Television tv)
+    + {static} void main(String[] args)
+}
+
+@enduml
